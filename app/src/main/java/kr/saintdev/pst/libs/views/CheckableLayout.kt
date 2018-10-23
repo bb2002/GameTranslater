@@ -11,17 +11,17 @@ import kr.saintdev.pst.R
 class CheckableLayout(context: Context, attrs: AttributeSet) : RelativeLayout(context, attrs), Checkable {
 
     override fun isChecked() : Boolean {
-        val cbBox = findViewById<CheckBox>(R.id.checkbox)
+        val cbBox = findViewById<CheckBox>(R.id.appitem_checkbox)
         return cbBox.isChecked
     }
 
     override fun toggle() {
-        val cbBox = findViewById<CheckBox>(R.id.checkbox)
+        val cbBox = findViewById<CheckBox>(R.id.appitem_checkbox)
         isChecked = !cbBox.isChecked
     }
 
     override fun setChecked(checked: Boolean) {
-        val cbBox = findViewById<CheckBox>(R.id.checkbox)
+        val cbBox = findViewById<CheckBox>(R.id.appitem_checkbox)
         if(cbBox.isChecked != checked) {
             cbBox.isChecked = checked
         }

@@ -20,4 +20,7 @@
     <string name="game_regi_comp">등록 되었습니다.</string>
     <string name="game_regi_comp_content">이제, 방금 선택한 앱들이 실행되면 게임 번역기는\n자동으로 실행 되어 번역 버튼을 오버레이 합니다.\n내 게임 목록으로 이동하여 확인해보세요.</string>
     <string name="game_regi_isadd">모두 게임만 선택했나요? 저희에게 알려주세요.</string>
+    <string name="game_regi_empty">등록 할 수 있는 앱이 없습니다.</string>
+
+    <string name='start_translate'>번역 시작</string>
 </resources>

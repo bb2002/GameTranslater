@@ -27,9 +27,10 @@
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/checkbox"
+        android:id="@+id/appitem_checkbox"
         android:focusable="false"
         android:clickable="false"
+        android:checked="false"
         android:layout_weight="1"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"

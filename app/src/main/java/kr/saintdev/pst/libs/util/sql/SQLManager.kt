@@ -24,7 +24,7 @@ object SQLManager {
         fun get(pkgName: String, context: Context) : InstalledPackageManager.ApplicationObject? {
             connectDB(context)
 
-            val cursor = dbm?.resultQuery("SELECT * FROM `tb_protector_repo` WHERE package_name = '$pkgName'")
+            val cursor = dbm?.resultQuery("SELECT * FROM `tb_translate_games` WHERE package_name = '$pkgName'")
 
             return if(cursor != null && cursor.moveToNext()) {
                 val pkgName = cursor.getString(1)
@@ -36,11 +36,22 @@ object SQLManager {
                 null
             }
         }
+
+        fun remove(pkgName: String, context: Context) {
+            connectDB(context)
+
+            dbm?.query("DELETE FROM `tb_protector_repo` WHERE package_name = ?", arrayOf(pkgName))
+        }
     }
 
     fun connectDB(context: Context) {
         if(dbm == null) {
             dbm = DatabaseManager(context)
         }
+    }
+
+    fun closeDB() {
+        dbm?.close()
+        dbm = null
     }
 }

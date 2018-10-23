@@ -15,6 +15,7 @@ import kr.saintdev.pst.R
 import kr.saintdev.pst.libs.util.InstalledPackageManager
 import kr.saintdev.pst.libs.util.InstalledPackageManager.requestInstalledPkgs
 import kr.saintdev.pst.libs.util.getStr
+import kr.saintdev.pst.libs.util.sql.SQLManager
 import kr.saintdev.pst.views.activitys.GameRegisterActivity
 import kr.saintdev.pst.views.adapters.PkgListAdapter
 import java.util.ArrayList
@@ -54,23 +55,40 @@ class PkgListActivity : Fragment() {
      * 설치된 앱들을 찾았습니다.
      */
     private fun resetInstalledItem(apps: ArrayList<InstalledPackageManager.ApplicationObject>) {
-        pkg_searching.visibility = View.INVISIBLE
-        this.adapter = PkgListAdapter(apps)
+        // 이미 등록된 패키지는 목록에서 제외합니다.
+        val filteredApps = apps.filter {
+            SQLManager.Game.get(it.pkgName, context!!) == null
+        }
+        this.adapter = PkgListAdapter(filteredApps)
         pkg_listview.adapter = this.adapter
+
+        if(filteredApps.isEmpty()) {
+            pkg_searching.setText(R.string.game_regi_empty)
+        } else {
+            pkg_searching.visibility = View.INVISIBLE
+        }
     }
 
     private fun clickNextButton() {
         // 선택된 앱들을 불러온다.
-        val checkedApps = this.adapter!!.getCheckedItems()
+        val checkedItems = this.adapter?.getCheckedItems()
+        val appList = this.adapter?.items
 
-        if(checkedApps.size == 0) {
-            // 선택해주세요.
-            Toast.makeText(activity, R.string.game_list_error1, Toast.LENGTH_SHORT).show()
-        } else {
-            // 등록 화면으로 이동 한다.
-            val act = activity as GameRegisterActivity
-            act.selectedItems = checkedApps
-            act.changeFragment(2)
+        if(checkedItems != null && appList != null) {
+            if(checkedItems.size == 0) {
+                // 선택해주세요.
+                Toast.makeText(activity, R.string.game_list_error1, Toast.LENGTH_SHORT).show()
+            } else {
+                // 선택된 아이템을 ApplicationObject 로 받아오고
+                // 부모 엑티비티에 적용한다.
+                val appObjects = arrayListOf<InstalledPackageManager.ApplicationObject>()
+                for(i in checkedItems) {
+                    appObjects.add(appList[i])
+                }
+                val act = activity as GameRegisterActivity
+                act.selectedItems = appObjects
+                act.changeFragment(2)
+            }
         }
     }
 }

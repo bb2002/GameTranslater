@@ -1,18 +1,20 @@
 package kr.saintdev.pst.views.adapters
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.CheckBox
 import android.widget.TextView
 import com.mikhaellopez.circularimageview.CircularImageView
 import kotlinx.android.synthetic.main.item_applist.view.*
 import kr.saintdev.pst.R
 import kr.saintdev.pst.libs.util.InstalledPackageManager
 
-class PkgListAdapter(val items: ArrayList<InstalledPackageManager.ApplicationObject>) : BaseAdapter() {
-    private val itemViews = arrayListOf<View>()
+class PkgListAdapter(val items: List<InstalledPackageManager.ApplicationObject>) : BaseAdapter() {
+    private val checkedItemsIndex = arrayListOf<Int>()
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val context = parent.context
@@ -31,7 +33,15 @@ class PkgListAdapter(val items: ArrayList<InstalledPackageManager.ApplicationObj
         iconView.setImageDrawable(appIcon)
         appNameView.text = appName
 
-        this.itemViews.add(view)
+        val ckBox = view.findViewById<CheckBox>(R.id.appitem_checkbox)
+        ckBox.setOnCheckedChangeListener {
+            _, bool ->
+            if(bool) {
+                checkedItemsIndex.add(position)
+            } else {
+                checkedItemsIndex.remove(position)
+            }
+        }
 
         return view
     }
@@ -43,13 +53,6 @@ class PkgListAdapter(val items: ArrayList<InstalledPackageManager.ApplicationObj
     override fun getCount() = items.size
 
     fun getCheckedItems() : ArrayList<Int> {
-        val checkedItem = arrayListOf<Int>()
-
-        for (i in 0 until itemViews.size) {
-            val v = itemViews[i]
-            if(v.checkbox.isChecked) checkedItem.add(i)
-        }
-
-        return checkedItem
+        return checkedItemsIndex
     }
 }

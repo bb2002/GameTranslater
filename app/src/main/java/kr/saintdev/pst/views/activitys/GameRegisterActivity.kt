@@ -3,6 +3,7 @@ package kr.saintdev.pst.views.activitys
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import kr.saintdev.pst.R
+import kr.saintdev.pst.libs.util.InstalledPackageManager
 import kr.saintdev.pst.views.fragments.gameregi.CompleteFragmnt
 import kr.saintdev.pst.views.fragments.gameregi.IntroFragment
 import kr.saintdev.pst.views.fragments.gameregi.PkgListActivity
@@ -14,7 +15,7 @@ class GameRegisterActivity : AppCompatActivity() {
             CompleteFragmnt()
     )
     private var indexPointer = 0
-    var selectedItems: ArrayList<Int> = arrayListOf()
+    var selectedItems: ArrayList<InstalledPackageManager.ApplicationObject> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
