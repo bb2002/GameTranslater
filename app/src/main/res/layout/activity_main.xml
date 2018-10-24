@@ -56,20 +56,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <kr.saintdev.pst.libs.views.ItemButtonView
+            <kr.saintdev.gametrans.libs.views.ItemButtonView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/menu_game_add"
                 app:text="@string/add_game"
                 app:symbol="@drawable/ic_add"
                 />
-            <kr.saintdev.pst.libs.views.ItemButtonView
+            <kr.saintdev.gametrans.libs.views.ItemButtonView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/menu_my_game"
                 app:text="@string/my_game"
                 app:symbol="@drawable/ic_game"/>
-            <kr.saintdev.pst.libs.views.ItemButtonView
+            <kr.saintdev.gametrans.libs.views.ItemButtonView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/menu_game_search"
@@ -81,19 +81,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <kr.saintdev.pst.libs.views.ItemButtonView
+            <kr.saintdev.gametrans.libs.views.ItemButtonView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/menu_charge_coin"
                 app:text="@string/scene_charge"
                 app:symbol="@drawable/ic_cash"/>
-            <kr.saintdev.pst.libs.views.ItemButtonView
+            <kr.saintdev.gametrans.libs.views.ItemButtonView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/menu_help"
                 app:text="@string/help"
                 app:symbol="@drawable/ic_info"/>
-            <kr.saintdev.pst.libs.views.ItemButtonView
+            <kr.saintdev.gametrans.libs.views.ItemButtonView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/menu_app_info"

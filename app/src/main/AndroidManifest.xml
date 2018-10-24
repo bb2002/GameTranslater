@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="kr.saintdev.pst">
+    package="kr.saintdev.gametrans">
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -12,7 +12,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:name=".engine.auth.GlobalApplication">
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="@string/kakao_app_key" />
         <activity android:name=".MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -24,8 +28,11 @@
 
         <activity android:name=".views.activitys.GameRegisterActivity"
             android:screenOrientation="portrait"
-            android:label="@string/game_register_activity_title"
             android:theme="@style/NoActionBarTheme"/>
+        
+        <activity android:name=".views.activitys.AuthActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBarTheme" />
 
         <service
             android:name=".engine.service.GameTranService"
