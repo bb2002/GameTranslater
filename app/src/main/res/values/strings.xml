@@ -10,6 +10,11 @@
     <string name="help">도움말</string>
     <string name="app_info">정보</string>
     <string name="searching">검색 중 입니다...</string>
+    <string name="error">오류!</string>
+
+    <string name="error_kakao_failed">카카오 로그인 세션을 열 수 없습니다.</string>
+    <string name="error_network_not_connect">휴대폰이 네트워크에 연결되어 있지 않습니다.</string>
+    <string name="error_network_auth">서버에 인증 할 수 없습니다.</string>
 
     <string name="main_sub_message1">앞으로 번역 할 수 있는 씬의 갯수 입니다.</string>
     <string name="game_register_activity_title">새 게임 등록</string>
