@@ -4,6 +4,7 @@ import android.app.ProgressDialog
 import android.content.DialogInterface
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
+import kr.saintdev.gametrans.libs.util.getStr
 
 /**
  * 단순한 경고창을 발생시킵니다.
@@ -32,10 +33,10 @@ fun String.openConfirm(title: String, activity: AppCompatActivity, listener: Dia
 /**
  * 로딩중 다이얼로그를 발생 시킵니다.
  */
-fun String.openProgress(title: String, activity: AppCompatActivity) : ProgressDialog {
+fun String.openProgress(title: Int, activity: AppCompatActivity) : ProgressDialog {
     val dialog = ProgressDialog(activity)
     dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER)
-    dialog.setMessage(title)
+    dialog.setMessage(title.getStr(activity))
     dialog.setCancelable(false)
     dialog.show()
 

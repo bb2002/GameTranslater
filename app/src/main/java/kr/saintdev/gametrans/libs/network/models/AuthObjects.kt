@@ -2,7 +2,7 @@ package kr.saintdev.gametrans.libs.network.models
 
 import com.google.gson.annotations.SerializedName
 
-data class KakaoLoginResponse(
+data class GameTranslateLoginResponse(
         @SerializedName("isNew") val isNew: Boolean,     // 새로 생성된 계정인가?
         @SerializedName("secretKey") val secretKey: String,  // 인증 후 키 값
         @SerializedName("remainScene") val remainScene: Int,   // 현재 남은 씬
