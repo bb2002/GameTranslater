@@ -7,6 +7,7 @@ import com.kakao.network.ErrorResult
 import com.kakao.usermgmt.UserManagement
 import com.kakao.usermgmt.callback.MeV2ResponseCallback
 import com.kakao.usermgmt.response.MeV2Response
+import kr.saintdev.gametrans.libs.network.netlib.aesDecode
 import kr.saintdev.gametrans.libs.properties.EnvProperties
 import kr.saintdev.gametrans.libs.properties.EnvPropertiesID
 
@@ -32,23 +33,20 @@ object AuthManager {
     /**
      * 인증 키를 요청 한다.
      */
-    fun requestAuthKey(context: Context, auth: OnResponseAuthKey) {
+    fun requestAuthKey(auth: OnResponseAuthKey) {
         val type = isLoginned()
         when(type) {
             "kakao" -> {
                 UserManagement.getInstance().me(object : MeV2ResponseCallback() {
                     override fun onSuccess(result: MeV2Response?) {
-
+                        val key = result?.id?.toString()
+                        auth.onResponse(key)
                     }
 
-                    override fun onSessionClosed(errorResult: ErrorResult?) {
-
-                    }
+                    override fun onSessionClosed(errorResult: ErrorResult?) = auth.onResponse(null)
                 })
             }
-            "google" -> {
-                FirebaseAuth.getInstance().currentUser?.uid
-            }
+            "google" -> auth.onResponse(FirebaseAuth.getInstance().currentUser?.uid)
         }
     }
 
@@ -59,9 +57,5 @@ object AuthManager {
     /**
      * 보안 키를 가져온다.
      */
-    fun getSecretKey() {
-
-    }
-
-
+    fun getSecretKey(context: Context) = EnvProperties.get(EnvPropertiesID.AUTH_SECRET_KEY, context)?.aesDecode(context)
 }

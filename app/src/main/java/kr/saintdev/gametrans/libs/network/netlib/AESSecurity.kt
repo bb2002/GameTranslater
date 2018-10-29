@@ -54,7 +54,7 @@ class AESSecurity(context: Context) {
 }
 
 /**
- * Plain Text -> URLSafe -> Base64 (AES Encode)
+ * Plain Text -> Base64 (AES Encode) -> URLSafe
  */
 fun String.aesEncode(context: Context) : String? {
     val secure = AESSecurity(context)
