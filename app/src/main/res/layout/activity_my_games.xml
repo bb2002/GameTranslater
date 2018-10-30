@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/mygames_container"
+        android:background="@color/colorPrimary"
+        android:padding="16dp"
+        android:gravity="center">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/mygames_title"
+            android:text="@string/mygames_title"
+            android:textColor="@color/textColor"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/mygames_content"
+            android:text="@string/mygames_content"
+            android:layout_below="@id/mygames_title"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/textColor"/>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mygames_empty_set"
+        android:text="@string/mygames_empty"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"/>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/mygames_list"
+        android:layout_below="@id/mygames_container"
+        android:layout_margin="16dp"/>
+</RelativeLayout>

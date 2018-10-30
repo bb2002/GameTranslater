@@ -6,39 +6,32 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.CheckBox
+import android.widget.ImageButton
 import android.widget.TextView
 import com.mikhaellopez.circularimageview.CircularImageView
 import kr.saintdev.gametrans.R
 import kr.saintdev.gametrans.libs.util.InstalledPackageManager
 
-class PkgListAdapter(val items: List<InstalledPackageManager.ApplicationObject>) : BaseAdapter() {
-    private val checkedItemsIndex = arrayListOf<Int>()
-
+class DelablePkgAdapter(val items: ArrayList<InstalledPackageManager.ApplicationObject>, val listener: OnDeleteClickListener) : BaseAdapter() {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val context = parent.context
 
         val view = if(convertView == null) {
             val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            inflater.inflate(R.layout.item_applist, parent, false)
+            inflater.inflate(R.layout.item_applist_delable, parent, false)
         } else {
             convertView
         }
 
-        val iconView = view.findViewById<CircularImageView>(R.id.appitem_icon)
-        val appNameView = view.findViewById<TextView>(R.id.appitem_name)
+        val iconView = view.findViewById<CircularImageView>(R.id.delable_appitem_icon)
+        val appNameView = view.findViewById<TextView>(R.id.delable_appitem_name)
+        val delButton = view.findViewById<ImageButton>(R.id.delable_appitem_remove)
 
         val (appName, pkgName, appIcon) = items[position]
         iconView.setImageDrawable(appIcon)
         appNameView.text = appName
-
-        val ckBox = view.findViewById<CheckBox>(R.id.appitem_checkbox)
-        ckBox.setOnCheckedChangeListener {
-            _, bool ->
-            if(bool) {
-                checkedItemsIndex.add(position)
-            } else {
-                checkedItemsIndex.remove(position)
-            }
+        delButton.setOnClickListener {
+            listener.onClick(it, position)
         }
 
         return view
@@ -50,7 +43,12 @@ class PkgListAdapter(val items: List<InstalledPackageManager.ApplicationObject>)
 
     override fun getCount() = items.size
 
-    fun getCheckedItems() : ArrayList<Int> {
-        return checkedItemsIndex
+    fun remove(idx: Int) {
+        items.removeAt(idx)
+        notifyDataSetChanged()
+    }
+
+    interface OnDeleteClickListener {
+        fun onClick(view: View, idx: Int)
     }
 }

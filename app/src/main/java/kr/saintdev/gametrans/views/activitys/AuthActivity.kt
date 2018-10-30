@@ -55,6 +55,8 @@ class AuthActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        Log.e("GMT", ForDevelopment.getSecretKey(this))
+
         // 로그인 전, 모두 로그아웃 한다.
         FirebaseAuth.getInstance().signOut()
         UserManagement.getInstance().requestLogout(object : LogoutResponseCallback() { override fun onCompleteLogout() {} })
@@ -187,7 +189,7 @@ class AuthActivity : AppCompatActivity() {
      * 소셜 로그인을 마치고 게임 번역기 서버에 계정을 등록합니다.
      */
     private fun authForGameTranslate(authKey: String, nickname: String, email: String = EMAIL_DEFAULT, photoUrl: String = PHOTO_DEFAULT, type: Int = 0) {
-        val dialog = R.string.authing.getStr(this).openProgress(R.string.info, this@AuthActivity)
+        val dialog = R.string.authing.getStr(this).openProgress(this@AuthActivity)
 
         fun onErrorOccurred(msg: String? = "") {
             (R.string.error_network_auth.getStr(this@AuthActivity) + msg)

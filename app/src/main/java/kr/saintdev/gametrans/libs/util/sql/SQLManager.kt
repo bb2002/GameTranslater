@@ -37,6 +37,24 @@ object SQLManager {
             }
         }
 
+        fun getAll(context: Context) : ArrayList<InstalledPackageManager.ApplicationObject> {
+            connectDB(context)
+
+            val cs = dbm?.resultQuery("SELECT * FROM `tb_translate_games`")
+            val pkgs = arrayListOf<InstalledPackageManager.ApplicationObject>()
+            if(cs != null) {
+                while (cs.moveToNext()) {
+                    pkgs.add(
+                            InstalledPackageManager.ApplicationObject(cs.getString(2),
+                            cs.getString(1),
+                            R.drawable.app_icon.getDrawable(context))
+                    )
+                }
+            }
+
+            return pkgs
+        }
+
         fun remove(pkgName: String, context: Context) {
             connectDB(context)
 

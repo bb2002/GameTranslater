@@ -34,6 +34,9 @@
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBarTheme" />
 
+        <activity android:name=".views.activitys.MyGameActivity"
+            android:screenOrientation="portrait" />
+
         <service
             android:name=".engine.service.GameTranService"
             android:description="@string/app_name"

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<kr.saintdev.gametrans.libs.views.CheckableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:descendantFocusability="blocksDescendants">
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:id="@+id/delable_appitem_icon"
+        android:src="@mipmap/ic_launcher_round"
+        app:civ_border_color="#FFFFFF"
+        app:civ_border_width="1.5dp"
+        app:civ_shadow="true"
+        app:civ_shadow_color="#eeeeee"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/delable_appitem_name"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/delable_appitem_icon"
+        android:layout_marginStart="16dp"
+        android:textSize="16sp"
+        android:textColor="@color/primaryTextColor"/>
+    <ImageButton
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:scaleType="centerInside"
+        android:background="@null"
+        android:padding="8dp"
+        android:id="@+id/delable_appitem_remove"
+        android:src="@drawable/ic_trashbin"
+        android:checked="false"
+        android:layout_weight="1"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="16dp" />
+</kr.saintdev.gametrans.libs.views.CheckableLayout>

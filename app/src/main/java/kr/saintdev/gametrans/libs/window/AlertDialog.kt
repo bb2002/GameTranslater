@@ -33,10 +33,10 @@ fun String.openConfirm(title: String, activity: AppCompatActivity, listener: Dia
 /**
  * 로딩중 다이얼로그를 발생 시킵니다.
  */
-fun String.openProgress(title: Int, activity: AppCompatActivity) : ProgressDialog {
+fun String.openProgress(activity: AppCompatActivity) : ProgressDialog {
     val dialog = ProgressDialog(activity)
     dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER)
-    dialog.setMessage(title.getStr(activity))
+    dialog.setMessage(this)
     dialog.setCancelable(false)
     dialog.show()
 
