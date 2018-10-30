@@ -9,6 +9,12 @@ import android.net.ConnectivityManager
 import android.net.Uri
 import android.os.Build
 import android.provider.Settings
+import android.util.Log
+import java.security.MessageDigest
+import android.content.pm.PackageManager
+import android.content.pm.PackageInfo
+import android.util.Base64
+
 
 fun Int.getStr(context: Context) = context.getString(this)
 
@@ -67,3 +73,22 @@ object SystemOverlay {
  * @return 해당 sdk 이상 만족하는지 에 대한 결과값
  */
 fun checkAPILevel(level: Int) = android.os.Build.VERSION.SDK_INT >= level
+
+object ForDevelopment {
+    fun getSecretKey(context: Context): String? {
+        var keyHash: String? = null
+        try {
+            val info =
+                    context.packageManager.getPackageInfo(context.packageName, PackageManager.GET_SIGNATURES)
+            for (signature in info.signatures) {
+                val md: MessageDigest = MessageDigest.getInstance("SHA")
+                md.update(signature.toByteArray())
+                keyHash = String(Base64.encode(md.digest(), 0))
+            }
+        } catch (e: Exception) {
+            return null
+        }
+
+        return keyHash
+    }
+}

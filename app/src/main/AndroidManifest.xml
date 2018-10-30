@@ -48,8 +48,15 @@
                 android:resource="@xml/accessibility" />
         </service>
 
+        <!-- 오버레이 버튼 서비스 -->
         <service android:name=".engine.service.RunButtonOverlay" />
-        
+
+        <!-- ぼんやくサビス　-->
+        <service android:name=".engine.service.TranslateOverlayService" />
+
+        <!-- 화면 캡쳐 서비스 -->
+        <service android:name=".engine.service.DisplayCaptureService" />
+
         <receiver android:name=".engine.broadcast.GameToggleBroadcast">
             <intent-filter>
                 <action android:name="kr.saintdev.pst.gametoggle" />

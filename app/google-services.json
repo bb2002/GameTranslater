@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "432065159359",
+    "firebase_url": "https://gametranslate-project.firebaseio.com",
+    "project_id": "gametranslate-project",
+    "storage_bucket": "gametranslate-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:432065159359:android:10d9bacc62f16076",
+        "android_client_info": {
+          "package_name": "kr.saintdev.gametrans"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "432065159359-l6cko86ntj9f58gkp8lmkacek7rpndvm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "kr.saintdev.gametrans",
+            "certificate_hash": "99520e29836e530821b841eb6a6668f3d37729e6"
+          }
+        },
+        {
+          "client_id": "432065159359-npm9r4375s2b6ot5cklc3f4rth22cn9i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXtKKEqHYSETHK_BP2pBrPLztuTDHGb2U"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "432065159359-npm9r4375s2b6ot5cklc3f4rth22cn9i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -10,6 +10,16 @@
     <string name="help">도움말</string>
     <string name="app_info">정보</string>
     <string name="searching">검색 중 입니다...</string>
+    <string name="authing">인증 중 입니다...</string>
+    <string name="error">오류!</string>
+    <string name="info">안내</string>
+
+    <string name="error_kakao_failed">카카오 로그인 세션을 열 수 없습니다.</string>
+    <string name="error_network_not_connect">휴대폰이 네트워크에 연결되어 있지 않습니다.</string>
+    <string name="error_network_auth">서버에 인증 할 수 없습니다.</string>
+    <string name="error_google_load_error">구글 로그인을 사용 할 수 없습니다!</string>
+    <string name="error_google_failed">구글 로그인에 실패했습니다.</string>
+    <string name="error_firebase_failed">인증 세션이 잘못되었습니다.</string>
 
     <string name="main_sub_message1">앞으로 번역 할 수 있는 씬의 갯수 입니다.</string>
     <string name="game_register_activity_title">새 게임 등록</string>
@@ -23,9 +33,12 @@
     <string name="game_regi_empty">등록 할 수 있는 앱이 없습니다.</string>
 
     <string name='start_translate'>번역 시작</string>
+    <string name="prepare_translate">번역 준비 안됨</string>
 
     <string name="welcome_title">어떤 게임이든\n어떤 언어든.</string>
     <string name="project_name">게임 번역기 프로젝트</string>
+
+    <string name="update_property_failed">자원 정보를 업데이트 할 수 없습니다.</string>
 
     <string name="kakao_app_key">3744dca611c49c9647f3bc23d9abbe12</string>
 </resources>

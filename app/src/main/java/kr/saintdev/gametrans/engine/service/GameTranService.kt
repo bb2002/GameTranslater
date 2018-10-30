@@ -32,16 +32,17 @@ class GameTranService : AccessibilityService() {
     }
 
     val IGNORE_PACKAGES = arrayOf(
-            "kr.saintdev.pst"
+            "kr.saintdev.gametrans"
     )
     override fun onAccessibilityEvent(event: AccessibilityEvent) {
         if(event.eventType == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) {
             // 윈도우 변경이 감지 됨.
             val pkgName = event.packageName.toString()
             if(IGNORE_PACKAGES.contains(pkgName)) return
-            Log.d("GMT", "DETECT! : $pkgName")
 
             val applicationObject = SQLManager.Game.get(pkgName, this)
+
+            Log.d("GMT", "DETECT : $pkgName")
 
             // 이 앱이 게임 번역기에 등록되었는지 확인함
             if(nowPlaying == pkgName) return
@@ -64,6 +65,8 @@ class GameTranService : AccessibilityService() {
         intent.putExtra("package-name", pkgName)
         intent.putExtra("toggle", true)
         sendBroadcast(intent)
+
+        Log.d("GMT", "RUNNING : $pkgName")
     }
 
     private fun gameStoppingBroadcast(pkgName: String) {
@@ -72,6 +75,8 @@ class GameTranService : AccessibilityService() {
         intent.putExtra("package-name", pkgName)
         intent.putExtra("toggle", false)
         sendBroadcast(intent)
+
+        Log.d("GMT", "EXIT : $pkgName")
     }
 
     override fun onInterrupt() {
