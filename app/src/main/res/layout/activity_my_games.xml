@@ -6,7 +6,7 @@
     android:orientation="vertical">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="120dp"
         android:id="@+id/mygames_container"
         android:background="@color/colorPrimary"
         android:padding="16dp"
@@ -21,13 +21,14 @@
             android:gravity="center"
             android:textStyle="bold"/>
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/mygames_content"
             android:text="@string/mygames_content"
             android:layout_below="@id/mygames_title"
             android:layout_marginTop="8dp"
-            android:textColor="@color/textColor"/>
+            android:textColor="@color/textColor"
+            android:gravity="center"/>
     </RelativeLayout>
 
     <TextView

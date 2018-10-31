@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_my_games.*
 import kr.saintdev.gametrans.R
 import kr.saintdev.gametrans.libs.util.InstalledPackageManager
@@ -62,6 +63,8 @@ class MyGameActivity : AppCompatActivity() {
             val item = adapter.getItem(idx)
             SQLManager.Game.remove(item.pkgName, this@MyGameActivity)
             adapter.remove(idx)
+
+            Toast.makeText(this@MyGameActivity, R.string.mygames_deleted, Toast.LENGTH_SHORT).show();
         }
     }
 }

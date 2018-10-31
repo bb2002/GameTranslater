@@ -57,8 +57,7 @@ object SQLManager {
 
         fun remove(pkgName: String, context: Context) {
             connectDB(context)
-
-            dbm?.query("DELETE FROM `tb_protector_repo` WHERE package_name = ?", arrayOf(pkgName))
+            dbm?.query("DELETE FROM `tb_translate_games` WHERE package_name = ?", arrayOf(pkgName))
         }
     }
 

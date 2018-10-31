@@ -43,11 +43,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // 사용자의 로그인 여부를 확인 한다.
-        if(AuthManager.isLoginned() == null || !AuthManager.isGameTranslateAuth(this)) {
-            startActivity(Intent(this, AuthActivity::class.java))
-            finish()
-            return
-        }
+//        if(AuthManager.isLoginned() == null || !AuthManager.isGameTranslateAuth(this)) {
+//            startActivity(Intent(this, AuthActivity::class.java))
+//            finish()
+//            return
+//        }
 
         val clickListener = OnItemClickHandler()
         menu_game_add.setOnClickListener(clickListener)

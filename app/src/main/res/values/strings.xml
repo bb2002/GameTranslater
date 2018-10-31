@@ -43,6 +43,7 @@
     <string name="mygames_title">등록된 게임</string>
     <string name="mygames_content">아래 게임들이 실행되면 게임 번역기가 자동으로 실행됩니다.</string>
     <string name="mygames_empty">등록된 게임이 없습니다.</string>
+    <string name="mygames_deleted">삭제되었습니다.</string>
 
     <string name="kakao_app_key">3744dca611c49c9647f3bc23d9abbe12</string>
 </resources>
