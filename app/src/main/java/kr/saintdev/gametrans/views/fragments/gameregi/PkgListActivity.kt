@@ -3,26 +3,22 @@ package kr.saintdev.gametrans.views.fragments.gameregi
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import kotlinx.android.synthetic.main.fragmn_pkg_list.*
-import kotlinx.android.synthetic.main.item_button.*
 import kr.saintdev.gametrans.R
 import kr.saintdev.gametrans.libs.util.InstalledPackageManager
 import kr.saintdev.gametrans.libs.util.InstalledPackageManager.requestInstalledPkgs
-import kr.saintdev.gametrans.libs.util.getStr
 import kr.saintdev.gametrans.libs.util.sql.SQLManager
 import kr.saintdev.gametrans.views.activitys.GameRegisterActivity
-import kr.saintdev.gametrans.views.adapters.PkgListAdapter
+import kr.saintdev.gametrans.views.adapters.CheckboxAppAdapter
 import java.util.ArrayList
 
 class PkgListActivity : Fragment() {
     private lateinit var v: View
-    private var adapter: PkgListAdapter? = null
+    private var adapter: CheckboxAppAdapter? = null
     private lateinit var nextButton: FloatingActionButton
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -59,7 +55,7 @@ class PkgListActivity : Fragment() {
         val filteredApps = apps.filter {
             SQLManager.Game.get(it.pkgName, context!!) == null
         }
-        this.adapter = PkgListAdapter(filteredApps)
+        this.adapter = CheckboxAppAdapter(filteredApps)
         pkg_listview.adapter = this.adapter
 
         if(filteredApps.isEmpty()) {

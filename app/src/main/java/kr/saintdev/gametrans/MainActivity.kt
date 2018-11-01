@@ -32,6 +32,7 @@ import kr.saintdev.gametrans.libs.window.openAlert
 import kr.saintdev.gametrans.views.activitys.AuthActivity
 import kr.saintdev.gametrans.views.activitys.GameRegisterActivity
 import kr.saintdev.gametrans.views.activitys.MyGameActivity
+import kr.saintdev.gametrans.views.activitys.SearchGameActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -126,6 +127,7 @@ class MainActivity : AppCompatActivity() {
             val clazz = when (v.id) {
                 R.id.menu_game_add -> GameRegisterActivity::class.java
                 R.id.menu_my_game -> MyGameActivity::class.java
+                R.id.menu_game_search -> SearchGameActivity::class.java
                 else -> null
             }
 

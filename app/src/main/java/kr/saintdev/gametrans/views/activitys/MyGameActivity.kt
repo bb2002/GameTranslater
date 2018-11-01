@@ -1,10 +1,8 @@
 package kr.saintdev.gametrans.views.activitys
 
 import android.app.ProgressDialog
-import android.os.AsyncTask
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_my_games.*
@@ -13,12 +11,11 @@ import kr.saintdev.gametrans.libs.util.InstalledPackageManager
 import kr.saintdev.gametrans.libs.util.getStr
 import kr.saintdev.gametrans.libs.util.sql.SQLManager
 import kr.saintdev.gametrans.libs.window.openProgress
-import kr.saintdev.gametrans.views.adapters.DelablePkgAdapter
-import kr.saintdev.gametrans.views.adapters.PkgListAdapter
+import kr.saintdev.gametrans.views.adapters.DeleteAppAdapter
 import java.util.ArrayList
 
 class MyGameActivity : AppCompatActivity() {
-    private lateinit var adapter: DelablePkgAdapter
+    private lateinit var adapter: DeleteAppAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,13 +49,13 @@ class MyGameActivity : AppCompatActivity() {
                 mygames_list.visibility = View.GONE
                 mygames_empty_set.visibility = View.VISIBLE
             } else {
-                adapter = DelablePkgAdapter(resultGames, OnDeleteClicked())
+                adapter = DeleteAppAdapter(resultGames, OnDeleteClicked())
                 mygames_list.adapter = adapter
             }
         }
     }
 
-    inner class OnDeleteClicked : DelablePkgAdapter.OnDeleteClickListener {
+    inner class OnDeleteClicked : DeleteAppAdapter.OnDeleteClickListener {
         override fun onClick(view: View, idx: Int) {
             val item = adapter.getItem(idx)
             SQLManager.Game.remove(item.pkgName, this@MyGameActivity)

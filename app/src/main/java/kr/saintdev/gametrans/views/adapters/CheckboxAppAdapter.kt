@@ -11,7 +11,7 @@ import com.mikhaellopez.circularimageview.CircularImageView
 import kr.saintdev.gametrans.R
 import kr.saintdev.gametrans.libs.util.InstalledPackageManager
 
-class PkgListAdapter(val items: List<InstalledPackageManager.ApplicationObject>) : BaseAdapter() {
+class CheckboxAppAdapter(val items: List<InstalledPackageManager.ApplicationObject>) : BaseAdapter() {
     private val checkedItemsIndex = arrayListOf<Int>()
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
@@ -19,7 +19,7 @@ class PkgListAdapter(val items: List<InstalledPackageManager.ApplicationObject>)
 
         val view = if(convertView == null) {
             val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            inflater.inflate(R.layout.item_applist, parent, false)
+            inflater.inflate(R.layout.item_applist_checkbox, parent, false)
         } else {
             convertView
         }

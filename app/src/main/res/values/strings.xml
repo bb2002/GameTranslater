@@ -45,5 +45,12 @@
     <string name="mygames_empty">등록된 게임이 없습니다.</string>
     <string name="mygames_deleted">삭제되었습니다.</string>
 
+    <string name="game_search_title">새 게임 탐색</string>
+    <string name="game_search_content">휴대폰에 설치된 게임을 찾아봅니다.\n일부 게임은 탐색되지 않을 수 있습니다.</string>
+    <string name="game_search_apps">탐색된 게임</string>
+    <string name="game_search_apps_content">휴대폰에 설치된 게임들 입니다.\n탐색되지 않는 게임은 직접 등록해주세요.</string>
+    <string name="game_search_empty">설치된 게임이 없습니다.</string>
+    <string name="game_search_failed">필터 서버에 연결 할 수 없습니다.</string>
+
     <string name="kakao_app_key">3744dca611c49c9647f3bc23d9abbe12</string>
 </resources>
