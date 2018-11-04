@@ -3,12 +3,13 @@ package kr.saintdev.gametrans.views.activitys
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import kr.saintdev.gametrans.R
+import kr.saintdev.gametrans.views.fragments.gmsearch.CompleteFragmnt
 import kr.saintdev.gametrans.views.fragments.gmsearch.IntroFragment
 import kr.saintdev.gametrans.views.fragments.gmsearch.SearchFragment
 
 class SearchGameActivity : AppCompatActivity() {
     val FRAGMENTS = arrayOf(
-        IntroFragment(), SearchFragment()
+        IntroFragment(), SearchFragment(), CompleteFragmnt()
     )
     private var indexPointer = 0
 

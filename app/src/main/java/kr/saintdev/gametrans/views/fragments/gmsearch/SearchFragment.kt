@@ -2,6 +2,7 @@ package kr.saintdev.gametrans.views.fragments.gmsearch
 
 import android.content.Context
 import android.os.Bundle
+import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -16,7 +17,9 @@ import kr.saintdev.gametrans.libs.network.models.GameObject
 import kr.saintdev.gametrans.libs.network.netlib.NetContant.retrofit
 import kr.saintdev.gametrans.libs.util.InstalledPackageManager
 import kr.saintdev.gametrans.libs.util.getStr
+import kr.saintdev.gametrans.libs.util.sql.SQLManager
 import kr.saintdev.gametrans.libs.window.openAlert
+import kr.saintdev.gametrans.views.activitys.SearchGameActivity
 import kr.saintdev.gametrans.views.adapters.DefaultAppAdapter
 import retrofit2.Call
 import retrofit2.Callback
@@ -24,12 +27,23 @@ import retrofit2.Response
 import java.util.ArrayList
 
 class SearchFragment : Fragment() {
+    private lateinit var nextButton: FloatingActionButton
+    private var adapter: DefaultAppAdapter? = null
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.fragmn_search_myapps, container, false)
 
+        this.nextButton = v.findViewById(R.id.next_button)
+        this.nextButton.setOnClickListener {
+            if(this.adapter != null) {
+                val items = this.adapter!!.items
+                for(i in items) SQLManager.Game.add(i, context!!)
+                (activity as SearchGameActivity).changeFragment(2)
+            }
+        }
+
         // 휴대폰에 설치된 게임을 가져온다.
         InstalledPackageManager.requestInstalledPkgs(context!!, OnPackageSearchedListener())
-
         return v
     }
 
@@ -67,11 +81,13 @@ class SearchFragment : Fragment() {
                         }
 
                         if(checkedGamesArray.isNotEmpty()) {
-                            pkg_listview.adapter = DefaultAppAdapter(checkedGamesArray)
+                            adapter = DefaultAppAdapter(checkedGamesArray)
+                            pkg_listview.adapter = adapter
                             pkg_searching.visibility = View.GONE
                             next_button.visibility = View.VISIBLE
                         } else {
                             pkg_searching.visibility = View.VISIBLE
+                            pkg_searching.text = R.string.game_search_empty.getStr(context!!)
                         }
                     }
                 })
